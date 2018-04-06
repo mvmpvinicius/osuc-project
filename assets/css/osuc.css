@@ -1,0 +1,12 @@
+.caixa_lista {
+	height: 36em;
+	overflow: auto;
+}
+.lista a{
+	float: left;
+	padding: 0 !important;
+	width: 93%;
+}
+.lista i{
+	cursor: pointer;
+}

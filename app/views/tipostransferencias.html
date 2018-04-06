@@ -1,0 +1,46 @@
+<div class="row">
+    <div class="medium-3 columns">
+        <h1>
+        <h1 style="text-align: center;">
+        <img src="assets/img/logo.png">
+        </h1>
+    </div>
+</div>
+<div class="row">
+    <div class="large-9 push-3 columns">
+        <h3>Tipos de Transferências<p ng-show="tipostransferenciasCtrl.acao == 'editatipoTransferencia'">Editando - {{tipostransferenciasCtrl.nome}}</p></h3>
+        <form>
+            <div class="row">
+                <div class="large-4 columns">
+                    <label>Nome</label>
+                    <input ng-model="tipostransferenciasCtrl.nome" type="text" />
+                </div>
+            </div>
+            <div class="row" style="margin-top: 1em;">
+                <ul class="button-group radius right">
+                    <li><a href="#" ng-click="tipostransferenciasCtrl.salvar_tipotransferencia()" class="button">Salvar</a></li>
+                    <li><a href="#" class="button">Cancelar</a></li>
+                </ul>
+            </div>
+        </form>
+    </div>
+    <div class="large-3 pull-9 columns caixa_lista">
+        <input ng-model="tipotransferencia_nome" type="text" placeholder="Procure...">
+        <ul class="side-nav">
+            <li ng-repeat="tipotransferencia in tipostransferenciasCtrl.tipostransferencias | filter:tipotransferencia_nome" class="lista">
+                <a href="#" ng-click="tipostransferenciasCtrl.buscar_tipostransferencias(tipotransferencia.id)">{{tipotransferencia.nome}}</a>
+                <i class="step fi-x size-18" ng-click="tipostransferenciasCtrl.excluir_tipotransferencia(tipotransferencia.id)"></i>
+            </li>
+        </ul>
+    </div>
+</div>
+<footer class="row">
+    <div class="large-12 columns">
+        <hr>
+        <div class="row">
+            <div class="large-6 columns">
+                <p>© Copyright no one at all. Go to town.</p>
+            </div>
+        </div>
+    </div>
+</footer>

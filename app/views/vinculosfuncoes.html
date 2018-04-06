@@ -1,0 +1,77 @@
+<div class="row">
+    <div class="large-3 columns">
+        <h1>
+        <img src="http://placehold.it/400x100&amp;text=Logo">
+        </h1>
+    </div>
+</div>
+<div class="row">
+    <div class="large-9 push-3 columns">
+        <h3>Vínculos e Funções</h3>
+        <form>
+            <div class="row">
+                <div class="large-6 columns">
+                    <label>Função</label>
+                    <select ng-model="vinculosfuncoesCtrl.funcao">
+                        <option value="contribuinte">Contribuinte</option>
+                        <option value="colaborador">Colaborador</option>
+                        <option value="encarregado">Encarregado</option>
+                        <option value="gerente">Gerente</option>
+                        <option value="diretor">Diretor</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-6 columns">
+                    <label>Selecione a Pessoa</label>
+                    <select ng-model="vinculosfuncoesCtrl.id_pessoa">
+                        <option ng-repeat="pessoa in pessoasCtrl.pessoas" value="{{pessoa.id}}">{{pessoa.nome}}</option>
+                    </select>
+                </div>
+                <div ng-show="vinculosfuncoesCtrl.funcao == 'contribuinte'" class="large-6 columns">
+                    <label>Selecione o Vínculo(Colaborador)</label>
+                    <select ng-model="vinculosfuncoesCtrl.id_vinculo">
+                        <option ng-repeat="colaborador in vinculosfuncoesCtrl.colaboradores" value="{{colaborador.id}}">{{colaborador.nome}}</option>
+                    </select>
+                </div>
+                <div ng-show="vinculosfuncoesCtrl.funcao == 'colaborador'" class="large-6 columns">
+                    <label>Selecione o Vínculo(Gerente)</label>
+                    <select ng-model="vinculosfuncoesCtrl.id_vinculo">
+                        <option ng-repeat="gerente in vinculosfuncoesCtrl.gerentes" value="{{gerente.id}}">{{gerente.nome}}</option>
+                    </select>
+                </div>
+                <div ng-show="vinculosfuncoesCtrl.funcao == 'gerente' || vinculosfuncoesCtrl.funcao == 'encarregado'" class="large-6 columns">
+                    <label>Selecione o Vínculo(Diretor)</label>
+                    <select ng-model="vinculosfuncoesCtrl.id_vinculo">
+                        <option ng-repeat="diretor in vinculosfuncoesCtrl.diretores" value="{{diretor.id}}">{{diretor.nome}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 1em;">
+                <ul class="button-group radius right">
+                    <li><a href="#" ng-click="vinculosfuncoesCtrl.salvar_vinculofuncao()" class="button">Salvar</a></li>
+                    <li><a href="#" class="button">Cancelar</a></li>
+                </ul>
+            </div>
+        </form>
+    </div>
+    <div class="large-3 pull-9 columns caixa_lista">
+        <input ng-model="nome" type="text">
+        <ul class="side-nav">
+            <li ng-repeat="vinculofuncao in vinculosfuncoesCtrl.vinculosfuncoes | filter:nome" class="lista">
+                <a href="#" ng-click="vinculosfuncoesCtrl.buscar_vinculosfuncoes(vinculofuncao.id, vinculofuncao.funcao)">{{vinculofuncao.nome}}</a>
+                <i class="step fi-x size-18" ng-click="vinculosfuncoesCtrl.excluir_vinculofuncao(vinculofuncao.id, vinculofuncao.funcao)"></i>
+            </li>
+        </ul>
+    </div>
+</div>
+<footer class="row">
+    <div class="large-12 columns">
+        <hr>
+        <div class="row">
+            <div class="large-6 columns">
+                <p>© Copyright no one at all. Go to town.</p>
+            </div>
+        </div>
+    </div>
+</footer>

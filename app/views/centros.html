@@ -1,0 +1,77 @@
+<div class="row">
+    <div class="medium-3 columns">
+        <h1>
+        <h1 style="text-align: center;">
+        <img src="assets/img/logo.png">
+        </h1>
+    </div>
+</div>
+<div class="row">
+    <div class="large-9 push-3 columns">
+        <h3>Centros<p ng-show="centrosCtrl.acao == 'editaCentro'">Editando - {{centrosCtrl.nome}}</p></h3>
+        <form>
+            <div class="row">
+                <div class="large-4 columns">
+                    <label>Nome</label>
+                    <input ng-model="centrosCtrl.nome" type="text" />
+                </div>
+                <div class="large-4 columns">
+                    <label>Procure pelo diretor</label>
+                    <input ng-model="centrosCtrl.prc_diretor" ng-keyup="centrosCtrl.procura_diretor()" type="text" />
+                </div>
+                <div class="large-4 columns">
+                    <label>Selecione o Diretor</label>
+                    <select ng-model="centrosCtrl.id_diretor">
+                        <option ng-repeat="diretor in centrosCtrl.diretores" value="{{diretor.id}}">{{diretor.nome}}</option>
+                    </select>
+                </div>
+            </div>
+            <!-- <div class="row">
+            
+            </div> -->
+            <div class="row">
+                <div class="large-6 columns">
+                    <label>Procure pelo nome do grupo...</label>
+                    <input ng-model="grupo_centro" type="text" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-12 columns" style="height: 10em; overflow: auto;">
+                    <label>Selecione os Grupos deste Centro</label>
+                    <a href="" ng-click="centrosCtrl.seleciona_grupo(grupo.id, grupo.nome)" ng-repeat="grupo in centrosCtrl.grupos | filter:grupo_centro" class="button">{{grupo.nome}}</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-12 columns" style="height: 10em; overflow: auto;">
+                    <label>Grupos Selecionados</label>
+                    <a href="" ng-click="centrosCtrl.deseleciona_grupo(grupo.id, grupo.nome)" ng-repeat="grupo in centrosCtrl.grupos_selecionados" class="button">{{grupo.nome}}</a>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 1em;">
+                <ul class="button-group radius right">
+                    <li><a href="#" ng-click="centrosCtrl.salvar_centro()" class="button">Salvar</a></li>
+                    <li><a href="#" class="button">Cancelar</a></li>
+                </ul>
+            </div>
+        </form>
+    </div>
+    <div class="large-3 pull-9 columns caixa_lista">
+        <input ng-model="centro_nome" type="text" placeholder="Procure...">
+        <ul class="side-nav">
+            <li ng-repeat="centro in centrosCtrl.centros | filter:centro_nome" class="lista">
+                <a href="#" ng-click="centrosCtrl.buscar_centros(centro.id)">{{centro.nome}}</a>
+                <i class="step fi-x size-18" ng-click="centrosCtrl.excluir_centro(centro.id)"></i>
+            </li>
+        </ul>
+    </div>
+</div>
+<footer class="row">
+    <div class="large-12 columns">
+        <hr>
+        <div class="row">
+            <div class="large-6 columns">
+                <p>© Copyright no one at all. Go to town.</p>
+            </div>
+        </div>
+    </div>
+</footer>

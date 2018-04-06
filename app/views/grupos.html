@@ -1,0 +1,102 @@
+<div class="row">
+    <div class="medium-3 columns">
+        <h1>
+        <h1 style="text-align: center;">
+        <img src="assets/img/logo.png">
+        </h1>
+    </div>
+</div>
+<div class="row">
+    <div class="large-9 push-3 columns">
+        <h3>Grupos<p ng-show="gruposCtrl.acao == 'editaGrupo'">Editando - {{gruposCtrl.nome}}</p></h3>
+        <form>
+            <div class="row">
+                <div class="large-4 columns">
+                    <label>Nome</label>
+                    <input ng-model="gruposCtrl.nome" type="text" />
+                </div>
+                <!-- <div class="large-4 columns">
+                    <label>Selecione o Encarregado</label>
+                    <select ng-model="gruposCtrl.id_encarregado">
+                        <option ng-repeat="pessoa in pessoasCtrl.pessoas" value="{{pessoa.id}}">{{pessoa.nome}}</option>
+                    </select>
+                </div> -->
+            </div>
+            <div class="row">
+                <div class="large-4 columns">
+                    <label>Procure pelo encarregado</label>
+                    <input ng-model="gruposCtrl.prc_encarregado" ng-keyup="gruposCtrl.procura_encarregado()" type="text" />
+                </div>
+                <div class="large-4 columns left">
+                    <label>Selecione o Encarregado</label>
+                    <select ng-model="gruposCtrl.id_encarregado">
+                        <option ng-repeat="encarregado in gruposCtrl.encarregados" value="{{encarregado.id}}">{{encarregado.nome}}</option>
+                    </select>
+                </div>
+            </div>
+            <!-- <div class="row">
+                <div class="large-4 columns">
+                    <label>Selecione um Gerente</label>
+                    <select ng-model="gruposCtrl.id_gerente1">
+                        <option ng-repeat="pessoa in pessoasCtrl.pessoas" value="{{pessoa.id}}">{{pessoa.nome}}</option>
+                    </select>
+                </div> -->
+            <div class="row">
+                <div class="large-4 columns">
+                    <label>Procure pelo gerente 1</label>
+                    <input ng-model="gruposCtrl.prc_gerente_1" ng-keyup="gruposCtrl.procura_gerente_1()" type="text" />
+                </div>
+                <div class="large-4 columns left">
+                    <label>Selecione o Gerente 1</label>
+                    <select ng-model="gruposCtrl.id_gerente_1">
+                        <option ng-repeat="gerente_1 in gruposCtrl.gerentes_1" value="{{gerente_1.id}}">{{gerente_1.nome}}</option>
+                    </select>
+                </div>
+            </div>
+                <!-- <div class="large-4 columns">
+                    <label>Selecione um Gerente</label>
+                    <select ng-model="gruposCtrl.id_gerente2">
+                        <option ng-repeat="pessoa in pessoasCtrl.pessoas" value="{{pessoa.id}}">{{pessoa.nome}}</option>
+                    </select>
+                </div>
+            </div> -->
+            <div class="row">
+                <div class="large-4 columns">
+                    <label>Procure pelo gerente 2</label>
+                    <input ng-model="gruposCtrl.prc_gerente_2" ng-keyup="gruposCtrl.procura_gerente_2()" type="text" />
+                </div>
+                <div class="large-4 columns left">
+                    <label>Selecione o Gerente 2</label>
+                    <select ng-model="gruposCtrl.id_gerente_2">
+                        <option ng-repeat="gerente_2 in gruposCtrl.gerentes_2" value="{{gerente_2.id}}">{{gerente_2.nome}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 1em;">
+                <ul class="button-group radius right">
+                    <li><a href="#" ng-click="gruposCtrl.salvar_grupo()" class="button">Salvar</a></li>
+                    <li><a href="#" class="button">Cancelar</a></li>
+                </ul>
+            </div>
+        </form>
+    </div>
+    <div class="large-3 pull-9 columns caixa_lista">
+        <input ng-model="grupo_nome" type="text" placeholder="Procure...">
+        <ul class="side-nav">
+            <li ng-repeat="grupo in gruposCtrl.grupos | filter:grupo_nome" class="lista">
+                <a href="#" ng-click="gruposCtrl.buscar_grupos(grupo.id)">{{grupo.nome}}</a>
+                <i class="step fi-x size-18" ng-click="gruposCtrl.excluir_grupo(grupo.id)"></i>
+            </li>
+        </ul>
+    </div>
+</div>
+<footer class="row">
+    <div class="large-12 columns">
+        <hr>
+        <div class="row">
+            <div class="large-6 columns">
+                <p>© Copyright no one at all. Go to town.</p>
+            </div>
+        </div>
+    </div>
+</footer>

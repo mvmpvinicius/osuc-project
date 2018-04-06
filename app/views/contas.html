@@ -1,0 +1,76 @@
+<div class="row">
+    <div class="medium-3 columns">
+        <h1>
+        <h1 style="text-align: center;">
+        <img src="assets/img/logo.png">
+        </h1>
+    </div>
+</div>
+<div class="row">
+    <div class="large-9 push-3 columns">
+        <h3>Contas<p ng-show="contasCtrl.acao == 'editaConta'">Editando - {{contasCtrl.conta}}</p></h3>
+        <form>
+            <!-- <div class="row">
+            
+            </div> -->
+            <div class="row">
+                <div class="large-4 columns">
+                    <label>Selecione o Banco</label>
+                    <select ng-model="contasCtrl.id_banco">
+                        <option ng-repeat="banco in bancosCtrl.bancos" value="{{banco.id}}">{{banco.nome}}</option>
+                    </select>
+                </div>
+                <div class="large-4 columns">
+                    <label>Agência</label>
+                    <input ng-model="contasCtrl.agencia" type="text" />
+                </div>
+                <div class="large-4 columns">
+                    <label>Conta</label>
+                    <input ng-model="contasCtrl.conta" type="text" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-6 columns">
+                    <label>Modalidade de Conta</label>
+                    <select ng-model="contasCtrl.modalidade">
+                        <option value="conta_corrente">Conta Corrente</option>
+                        <option value="poupanca">Poupança</option>
+                        <option value="outros">Outros</option>
+                    </select>
+                </div>
+                <div class="large-6 columns">
+                    <label>Tipo de Conta</label>
+                    <select ng-model="contasCtrl.tipo_conta">
+                        <option value="destino">Destino</option>
+                        <option value="origem">Origem</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 1em;">
+                <ul class="button-group radius right">
+                    <li><a href="#" ng-click="contasCtrl.salvar_conta()" class="button">Salvar</a></li>
+                    <li><a href="#" class="button">Cancelar</a></li>
+                </ul>
+            </div>
+        </form>
+    </div>
+    <div class="large-3 pull-9 columns caixa_lista">
+        <input ng-model="conta_nome" type="text" placeholder="Procure...">
+        <ul class="side-nav">
+            <li ng-repeat="conta in contasCtrl.contas | filter:conta_nome" class="lista">
+                <a href="#" ng-click="contasCtrl.buscar_contas(conta.id)">{{conta.conta}}</a>
+                <i class="step fi-x size-18" ng-click="contasCtrl.excluir_conta(conta.id)"></i>
+            </li>
+        </ul>
+    </div>
+</div>
+<footer class="row">
+    <div class="large-12 columns">
+        <hr>
+        <div class="row">
+            <div class="large-6 columns">
+                <p>© Copyright no one at all. Go to town.</p>
+            </div>
+        </div>
+    </div>
+</footer>

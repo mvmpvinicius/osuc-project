@@ -1,0 +1,79 @@
+<div class="row">
+    <div class="medium-3 columns">
+        <h1>
+        <h1 style="text-align: center;">
+        <img src="assets/img/logo.png">
+        </h1>
+    </div>
+</div>
+<div class="row">
+    <div class="large-9 push-3 columns">
+        <h3>Colaboradores<p ng-show="colaboradoresCtrl.acao == 'editaColaborador'">Editando - {{colaboradoresCtrl.nome}}</p></h3>
+        <form>
+            <div class="row">
+                <div class="large-4 columns">
+                    <label>Procure pelo colaborador</label>
+                    <input ng-model="colaboradoresCtrl.prc_colaborador" ng-keyup="colaboradoresCtrl.procura_colaborador()" type="text" />
+                </div>
+                <div class="large-4 columns">
+                    <label>Selecione o Colaborador</label>
+                    <select ng-model="colaboradoresCtrl.id_colaborador_pessoa">
+                        <option ng-repeat="colaborador in colaboradoresCtrl.colaboradores_pessoas" value="{{colaborador.id}}">{{colaborador.nome}}</option>
+                    </select>
+                </div>
+                <div class="large-4 columns">
+                    <label>Selecione o Grupo</label>
+                    <select ng-model="colaboradoresCtrl.id_grupo">
+                        <option ng-repeat="grupo in gruposCtrl.grupos" value="{{grupo.id}}">{{grupo.nome}}</option>
+                    </select>
+                </div>
+            </div>
+            <!-- <div class="row">
+            
+            </div> -->
+            <div class="row">
+                <div class="large-6 columns">
+                    <label>Procure pelo nome do contribuinte...</label>
+                    <input ng-model="colaboradoresCtrl.prc_contribuinte" ng-keyup="colaboradoresCtrl.procura_contribuinte()" type="text" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-12 columns" style="height: 10em; overflow: auto;">
+                    <label>Selecione os Contribuintes desse Colaborador</label>
+                    <a href="" ng-click="colaboradoresCtrl.seleciona_contribuinte(contribuinte.id, contribuinte.nome)" ng-repeat="contribuinte in colaboradoresCtrl.contribuintes" class="button">{{contribuinte.nome}}</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-12 columns" style="height: 10em; overflow: auto;">
+                    <label>Contribuintes Selecionados</label>
+                    <a href="" ng-click="colaboradoresCtrl.deseleciona_contribuinte(contribuinte.id, contribuinte.nome)" ng-repeat="contribuinte in colaboradoresCtrl.contribuintes_selecionados" class="button">{{contribuinte.nome}}</a>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 1em;">
+                <ul class="button-group radius right">
+                    <li><a href="#" ng-click="colaboradoresCtrl.salvar_colaborador()" class="button">Salvar</a></li>
+                    <li><a href="#" class="button">Cancelar</a></li>
+                </ul>
+            </div>
+        </form>
+    </div>
+    <div class="large-3 pull-9 columns caixa_lista">
+        <input ng-model="colaborador_nome" type="text" placeholder="Procure...">
+        <ul class="side-nav">
+            <li ng-repeat="colaborador in colaboradoresCtrl.colaboradores | filter:colaborador_nome" class="lista">
+                <a href="#" ng-click="colaboradoresCtrl.buscar_colaboradores(colaborador.id)">{{colaborador.nome}}</a>
+                <i class="step fi-x size-18" ng-click="colaboradoresCtrl.excluir_colaborador(colaborador.id)"></i>
+            </li>
+        </ul>
+    </div>
+</div>
+<footer class="row">
+    <div class="large-12 columns">
+        <hr>
+        <div class="row">
+            <div class="large-6 columns">
+                <p>© Copyright no one at all. Go to town.</p>
+            </div>
+        </div>
+    </div>
+</footer>

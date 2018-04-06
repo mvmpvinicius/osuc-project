@@ -1,0 +1,122 @@
+<div class="row">
+    <div class="medium-3 columns">
+        <h1>
+        <h1 style="text-align: center;">
+        <img src="assets/img/logo.png">
+        </h1>
+    </div>
+</div>
+<div class="row">
+    <div class="large-9 push-3 columns">
+        <h3>Pessoas<p ng-show="pessoasCtrl.acao == 'editaPessoa'">Editando - {{pessoasCtrl.nome}}</p></h3>
+        <form>
+            <div class="row">
+                <div class="large-4 columns">
+                    <select ng-model="pessoasCtrl.status">
+                        <option value="">Selecione Status</option>
+                        <option value="ativo">Ativo</option>
+                        <option value="inativo">Inativo</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-6 columns">
+                    <label>Nome</label>
+                    <input ng-model="pessoasCtrl.nome" type="text" />
+                </div>
+                <div class="large-6 columns">
+                    <label>Sobrenome</label>
+                    <input ng-model="pessoasCtrl.sobrenome" type="text" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-4 columns">
+                    <label>Selecione Pessoa</label>
+                    <select ng-model="pessoasCtrl.pessoa">
+                        <option value="fisica">Física</option>
+                        <option value="juridica">Jurídica</option>
+                    </select>
+                </div>
+                <div class="large-8 columns">
+                    <label ng-show="pessoasCtrl.pessoa == 'fisica'">CPF</label>
+                    <input ng-show="pessoasCtrl.pessoa == 'fisica'" ng-model="pessoasCtrl.cpf_cnpj" type="text" class="cpf" />
+                    <label ng-show="pessoasCtrl.pessoa == 'juridica'">CNPJ</label>
+                    <input ng-show="pessoasCtrl.pessoa == 'juridica'" ng-model="pessoasCtrl.cpf_cnpj" type="text" class="cnpj" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-4 columns">
+                    <label>Telefone</label>
+                    <input ng-model="pessoasCtrl.telefone" type="text" class="phone" />
+                </div>
+                <div class="large-4 columns">
+                    <label>E-mail</label>
+                    <input ng-model="pessoasCtrl.email" type="text" />
+                </div>
+                <div class="large-4 columns">
+                    <label>Data de Cadastro</label>
+                    <input ng-model="pessoasCtrl.data_cadastro" type="date" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-12 columns">
+                    <label>Comentários</label>
+                    <input ng-model="pessoasCtrl.comentarios" type="text" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-6 columns">
+                    <label>Endereço</label>
+                    <input ng-model="pessoasCtrl.endereco" type="text" />
+                </div>
+                <div class="large-2 columns">
+                    <label>Número</label>
+                    <input ng-model="pessoasCtrl.numero" type="text" />
+                </div>
+                <div class="large-4 columns">
+                    <label>CEP</label>
+                    <input ng-model="pessoasCtrl.cep" type="text" class="cep" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-6 columns">
+                    <select ng-change="pessoasCtrl.buscar_cidade()" ng-model="pessoasCtrl.estado">
+                        <option value="-1">Selecione o Estado</option>
+                        <option ng-repeat="estado in pessoasCtrl.estados" value="{{estado.id}}">{{estado.nome}}</option>
+                    </select>
+                </div>
+                <div class="large-6 columns">
+                    <select ng-model="pessoasCtrl.cidade">
+                        <option value="-1">Selecione a Cidade</option>
+                        <option ng-repeat="cidade in pessoasCtrl.cidades" value="{{cidade.id}}">{{cidade.nome}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 1em;">
+                <ul class="button-group radius right">
+                    <li><a href="#" ng-click="pessoasCtrl.salvar_pessoa()" class="button">Salvar</a></li>
+                    <li><a href="#" class="button">Cancelar</a></li>
+                </ul>
+            </div>
+        </form>
+    </div>
+    <div class="large-3 pull-9 columns caixa_lista">
+        <input ng-model="pessoasCtrl.prc_pessoa" ng-keyup="pessoasCtrl.procura_pessoa()" type="text" placeholder="Procure..." />
+        <ul class="side-nav">
+            <li ng-repeat="pessoa in pessoasCtrl.pessoas" class="lista">
+                <a href="#" ng-click="pessoasCtrl.buscar_pessoas(pessoa.id)">{{pessoa.nome}}</a>
+                <i class="step fi-x size-18" ng-click="pessoasCtrl.excluir_pessoa(pessoa.id)"></i>
+            </li>
+        </ul>
+    </div>
+</div>
+<footer class="row">
+    <div class="large-12 columns">
+        <hr>
+        <div class="row">
+            <div class="large-6 columns">
+                <p>© Copyright no one at all. Go to town.</p>
+            </div>
+        </div>
+    </div>
+</footer>

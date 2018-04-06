@@ -1,0 +1,88 @@
+<div class="row">
+    <div class="medium-3 columns">
+        <h1>
+        <h1 style="text-align: center;">
+        <img src="assets/img/logo.png">
+        </h1>
+    </div>
+</div>
+<div class="row">
+    <div class="large-9 push-3 columns">
+        <h3>Autorizações de Cobranças</h3>
+        <form>
+            <div class="row">
+                <div class="large-4 columns">
+                    <label>Procure pelo contribuinte</label>
+                    <input ng-model="autorizacoescobrancasCtrl.prc_contribuinte" ng-keyup="autorizacoescobrancasCtrl.procura_contribuinte()" type="text" />
+                </div>
+                <div class="large-4 columns">
+                    <label>Selecione o Contribuinte</label>
+                    <select ng-model="autorizacoescobrancasCtrl.id_contribuinte">
+                        <option ng-repeat="contribuinte in autorizacoescobrancasCtrl.contribuintes" value="{{contribuinte.id}}">{{contribuinte.nome}}</option>
+                    </select>
+                </div>
+                <div class="large-4 columns">
+                    <label>Selecione a Conta</label>
+                    <select ng-model="autorizacoescobrancasCtrl.id_conta">
+                        <option ng-repeat="conta in contasCtrl.contas" value="{{conta.id}}">{{conta.conta}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-4 columns">
+                    <label>Periodicidade</label>
+                    <input ng-model="autorizacoescobrancasCtrl.periodicidade" type="text" />
+                </div>
+                <div class="large-4 columns">
+                    <label>Data Início</label>
+                    <input ng-model="autorizacoescobrancasCtrl.data_inicio" type="date" />
+                </div>
+                <div class="large-4 columns">
+                    <label>Data Término</label>
+                    <input ng-model="autorizacoescobrancasCtrl.data_termino" type="date" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-4 columns">
+                    <label>Dia do Desconto</label>
+                    <input ng-model="autorizacoescobrancasCtrl.dia_desconto" type="text" />
+                </div>
+                <div class="large-4 columns">
+                    <label>Valor</label>
+                    <input ng-model="autorizacoescobrancasCtrl.valor" type="text" class="money" />
+                </div>
+                <div class="large-4 columns">
+                    <label>Selecione o Tipo de Transferência</label>
+                    <select ng-model="autorizacoescobrancasCtrl.id_tipo_transferencia">
+                        <option ng-repeat="tipotransferencia in tipostransferenciasCtrl.tipostransferencias" value="{{tipotransferencia.id}}">{{tipotransferencia.nome}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 1em;">
+                <ul class="button-group radius right">
+                    <li><a href="#" ng-click="autorizacoescobrancasCtrl.salvar_autorizacaocobranca()" class="button">Salvar</a></li>
+                    <li><a href="#" class="button">Cancelar</a></li>
+                </ul>
+            </div>
+        </form>
+    </div>
+    <div class="large-3 pull-9 columns caixa_lista">
+        <input ng-model="autorizacaocobranca_nome" type="text" placeholder="Procure...">
+        <ul class="side-nav">
+            <li ng-repeat="autorizacaocobranca in autorizacoescobrancasCtrl.autorizacoescobrancas | filter:autorizacaocobranca_nome" class="lista">
+                <a href="#" ng-click="autorizacoescobrancasCtrl.buscar_autorizacoescobrancas(autorizacaocobranca.id)">{{autorizacaocobranca.id_contribuinte}}</a>
+                <i class="step fi-x size-18" ng-click="autorizacoescobrancasCtrl.excluir_autorizacaocobranca(autorizacaocobranca.id)"></i>
+            </li>
+        </ul>
+    </div>
+</div>
+<footer class="row">
+    <div class="large-12 columns">
+        <hr>
+        <div class="row">
+            <div class="large-6 columns">
+                <p>© Copyright no one at all. Go to town.</p>
+            </div>
+        </div>
+    </div>
+</footer>
